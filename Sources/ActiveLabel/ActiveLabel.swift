@@ -176,7 +176,7 @@ public class ActiveLabel: UILabel {
     
     // MARK: - customzation
     @discardableResult
-    func customize(_ block: (_ label: ActiveLabel) -> ()) -> ActiveLabel {
+    public func customize(_ block: (_ label: ActiveLabel) -> ()) -> ActiveLabel {
         _customizing = true
         block(self)
         _customizing = false
