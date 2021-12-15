@@ -1,3 +1,3 @@
 # ActiveLabel
 
-A description of this package.
+Customized version of ActiveLabel

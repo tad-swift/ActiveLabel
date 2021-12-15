@@ -71,27 +71,27 @@ public class ActiveLabel: UILabel {
     }
     
     // MARK: - public methods
-     func handleMentionTap(_ handler: @escaping (String) -> ()) {
+    public func handleMentionTap(_ handler: @escaping (String) -> ()) {
         mentionTapHandler = handler
     }
     
-     func handleHashtagTap(_ handler: @escaping (String) -> ()) {
+    public func handleHashtagTap(_ handler: @escaping (String) -> ()) {
         hashtagTapHandler = handler
     }
     
-     func handleURLTap(_ handler: @escaping (URL) -> ()) {
+    public func handleURLTap(_ handler: @escaping (URL) -> ()) {
         urlTapHandler = handler
     }
     
-     public func handleCustomTap(for type: ActiveType, handler: @escaping (String) -> ()) {
+    public func handleCustomTap(for type: ActiveType, handler: @escaping (String) -> ()) {
         customTapHandlers[type] = handler
     }
     
-     func handleEmailTap(_ handler: @escaping (String) -> ()) {
+    public func handleEmailTap(_ handler: @escaping (String) -> ()) {
         emailTapHandler = handler
     }
     
-     func removeHandle(for type: ActiveType) {
+    public func removeHandle(for type: ActiveType) {
         switch type {
         case .hashtag:
             hashtagTapHandler = nil
@@ -106,12 +106,12 @@ public class ActiveLabel: UILabel {
         }
     }
     
-     func filterMention(_ predicate: @escaping (String) -> Bool) {
+    public func filterMention(_ predicate: @escaping (String) -> Bool) {
         mentionFilterPredicate = predicate
         updateTextStorage()
     }
     
-     func filterHashtag(_ predicate: @escaping (String) -> Bool) {
+    public func filterHashtag(_ predicate: @escaping (String) -> Bool) {
         hashtagFilterPredicate = predicate
         updateTextStorage()
     }
@@ -176,7 +176,7 @@ public class ActiveLabel: UILabel {
     
     // MARK: - customzation
     @discardableResult
-     func customize(_ block: (_ label: ActiveLabel) -> ()) -> ActiveLabel {
+    func customize(_ block: (_ label: ActiveLabel) -> ()) -> ActiveLabel {
         _customizing = true
         block(self)
         _customizing = false
@@ -190,7 +190,7 @@ public class ActiveLabel: UILabel {
         guard let text = text, !text.isEmpty else {
             return .zero
         }
-
+        
         textContainer.size = CGSize(width: self.preferredMaxLayoutWidth, height: CGFloat.greatestFiniteMagnitude)
         let size = layoutManager.usedRect(for: textContainer)
         return CGSize(width: ceil(size.width), height: ceil(size.height))
